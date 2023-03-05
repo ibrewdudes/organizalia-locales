@@ -1,0 +1,175 @@
+openapi: 3.0.2
+info:
+  contact:
+    email: apiteam@swagger.io
+    name: Swagger API Team
+    url: http://swagger.io
+  description: |-
+    A sample API that uses a petstore as an example to demonstrate features
+    in the OpenAPI 3.0 specification
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Organizalia
+  version: 1.0.0
+servers:
+- url: http://locales.swagger.io/api
+paths:
+  /locales/{localId}:
+    delete:
+      description: Deletes an existing `local`.
+      operationId: deletelocal
+      parameters:
+      - description: A unique identifier for a `local`.
+        explode: false
+        in: path
+        name: localId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: Successful response.
+      summary: Delete a local
+      x-accepts: application/json
+    description: "The REST endpoint/path used to get, update, and delete single instances\
+      \ of an `local`.  This path contains `GET`, `PUT`, and `DELETE` operations used\
+      \ to perform the get, update, and delete tasks, respectively."
+    get:
+      description: Gets the details of a single instance of a `local`.
+      operationId: getlocal
+      parameters:
+      - description: A unique identifier for a `local`.
+        explode: false
+        in: path
+        name: localId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/local'
+          description: Successful response - returns a single `local`.
+      summary: Get a local
+      x-accepts: application/json
+    put:
+      description: Updates an existing `local`.
+      operationId: updatelocal
+      parameters:
+      - description: A unique identifier for a `local`.
+        explode: false
+        in: path
+        name: localId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/local'
+        description: Updated `local` information.
+        required: true
+      responses:
+        "202":
+          description: Successful response.
+      summary: Update a local
+      x-content-type: application/json
+      x-accepts: application/json
+    summary: Path used to manage a single local.
+  /locales/search:
+    get:
+      description: Search of a local by city
+      operationId: searchLocal
+      parameters:
+        - in: query
+          name: city
+          schema:
+            type: integer
+            description: The city we are searching for locals
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/local'
+          description: Successful response - returns a list of `local`.
+      summary: Search for locals
+      x-content-type: application/json
+      x-accepts: application/json
+components:
+  schemas:
+    Error:
+      properties:
+        code:
+          format: int32
+          type: integer
+        message:
+          type: string
+      required:
+      - code
+      - message
+    searchLocal:
+      properties:
+        city:
+          type: string
+      required:
+        - city
+    local:
+      description: Locales en los que organizar un evento
+      example:
+        id: 1
+        nombre: La Tagliatella
+        direccion: Alfredo Vicenti
+        numero: 12-14
+        codigo_postal: 15004
+        localidad: A Coruña
+        provincia: A Coruña
+        para_llevar: true
+        a_domicilio: true
+        abierto: true
+        tipo_local: restaurante
+        tipo_cocina: italiana
+      properties:
+        id:
+          format: int32
+          type: integer
+        nombre:
+          type: string
+        direccion:
+          type: string
+        numero:
+          type: string
+        codigo_postal:
+          format: int32
+          type: integer
+        localidad:
+          type: string
+        provincia:
+          type: string
+        para_llevar:
+          type: boolean
+        a_domicilio:
+          type: boolean
+        abierto:
+          type: boolean
+        tipo_local:
+          type: string
+        tipo_cocina:
+          type: string
+        telefono:
+          description: ""
+          type: string
+      required:
+      - telefono
+      title: Root Type for local
+      type: object

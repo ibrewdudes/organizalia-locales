@@ -1,0 +1,102 @@
+{
+	"info": {
+		"_postman_id": "bdb0ed0e-afa1-4bfb-b05f-88e658859b97",
+		"name": "Organizalia - Locales",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Alta de local",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"nombre\": \"Kyoto Galicia\",\r\n\t\"direccion\": \"Federico Tapia\",\r\n\t\"numero\": 56,\r\n\t\"codigo_postal\": 15005,\r\n\t\"localidad\": \"A Coruña\",\r\n\t\"provincia\": \"A Coruña\",\r\n\t\"tipo\": 3,\r\n\t\"para_llevar\": false,\r\n\t\"a_domicilio\": false,\r\n\t\"tipo_cocina\": \"asiatica\",\r\n\t\"abierto\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/local",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"local"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Baja de local",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/local/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"local",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Modificación de local",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"nombre\": \"Kyoto Galicia\",\r\n\t\"direccion\": \"Federico Tapia\",\r\n\t\"numero\": 56,\r\n\t\"codigo_postal\": 15005,\r\n\t\"localidad\": \"A Coruña\",\r\n\t\"provincia\": \"A Coruña\",\r\n\t\"tipo\": 3,\r\n\t\"para_llevar\": false,\r\n\t\"a_domicilio\": false,\r\n\t\"tipo_cocina\": \"asiatica\",\r\n\t\"abierto\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/local/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"local",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Detalle de un local",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/local/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"local",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
